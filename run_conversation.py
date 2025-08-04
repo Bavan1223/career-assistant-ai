@@ -1,7 +1,3 @@
-from core.conversation.intro_conversation import get_intro_questions
-from core.conversation.followup_conversation import get_followup_questions
-from core.save_user import save_user_data
-
 def run_conversation():
     intro_questions = get_intro_questions()
     user_data = {}
