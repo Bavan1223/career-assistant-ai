@@ -1,10 +1,17 @@
-from core.conversation.intro_conversation import intro_conversation
+from core.conversation.intro_conversation import get_intro_questions
 from core.save_user import save_user_data
 
-# Start the intro Q&A
-user_data = intro_conversation()
+def run_intro():
+    questions = get_intro_questions()
+    answers = {}
 
-# Save the data
-save_user_data(user_data)
+    for q in questions:
+        print("AI:", q)
+        user_input = input("You: ")
+        answers[q] = user_input  # Map Q to A
 
-print("\n✅ Your responses have been saved. Thank you!")
+    # Save the answers
+    save_user_data(answers)
+
+if __name__ == "__main__":
+    run_intro()
