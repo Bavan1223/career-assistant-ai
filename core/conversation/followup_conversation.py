@@ -9,6 +9,7 @@ def get_followup_questions(user_data):
     if goal and "job" in goal.lower():
         if experience and experience.lower() in ["no", "not much", "beginner"]:
             followup_questions.append("What are you interested in? (e.g., Web Dev, Data Science, etc.)")
+            followup_questions.append("Do you need study material")
             followup_questions.append("Do you want a study roadmap or project guidance?")
         else:
             followup_questions.append("Do you have a resume ready?")
