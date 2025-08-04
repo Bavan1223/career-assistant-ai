@@ -1,17 +1,26 @@
 from core.conversation.intro_conversation import get_intro_questions
+from core.conversation.followup_conversation import get_followup_questions
 from core.save_user import save_user_data
 
-def run_intro():
-    questions = get_intro_questions()
-    answers = {}
+def run_conversation():
+    intro_questions = get_intro_questions()
+    user_data = {}
 
-    for q in questions:
+    # Intro round
+    for q in intro_questions:
         print("AI:", q)
         user_input = input("You: ")
-        answers[q] = user_input  # Map Q to A
+        user_data[q] = user_input
 
-    # Save the answers
-    save_user_data(answers)
+    # Follow-up round
+    followup_questions = get_followup_questions(user_data)
+    for q in followup_questions:
+        print("AI:", q)
+        user_input = input("You: ")
+        user_data[q] = user_input
+
+    # Save all
+    save_user_data(user_data)
 
 if __name__ == "__main__":
-    run_intro()
+    run_conversation()
